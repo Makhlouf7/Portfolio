@@ -31,7 +31,10 @@ const About = function () {
     },
   ];
   const [cards, setCards] = useState([
-    { title: "Click me", text: "Keep clicking me 😊" },
+    {
+      title: "Click me",
+      text: "Want to learn more about me? Keep clicking and I’ll tell you!",
+    },
     "",
     "",
     "",
