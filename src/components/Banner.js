@@ -1,37 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Row, Col, Container } from "react-bootstrap";
-import { CursorText, Linkedin, Github, Whatsapp } from "react-bootstrap-icons";
+import { Linkedin, Github, Whatsapp } from "react-bootstrap-icons";
 import myImage from "../assets/images/my-image.jpg";
 import { easeInOut, motion } from "framer-motion";
+import { ReactTyped } from "react-typed";
 
 const Banner = function () {
-  const phrases = ["Web Developer", "Front-end Developer", "React Developer"];
-
-  const [currentText, setCurrentText] = useState("");
-  const [index, setIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      let currentPhrase = phrases[index];
-      let text = currentPhrase.slice(
-        0,
-        currentText.length + (isDeleting ? -1 : 1)
-      );
-
-      setCurrentText(text);
-
-      if (!isDeleting && text === currentPhrase) {
-        setTimeout(() => setIsDeleting(true), 1500); // Wait a bit before deleting
-      } else if (isDeleting && text === "") {
-        setIsDeleting(false);
-        setIndex((prevIndex) => (prevIndex + 1) % phrases.length); // Move to the next phrase
-      }
-    }, 200);
-
-    return () => clearInterval(interval); // Clean up interval on component unmount
-  }, [currentText, isDeleting, index, phrases]);
-
   return (
     <section id="home" className="section">
       <Container className="banner">
@@ -45,12 +19,22 @@ const Banner = function () {
             <div className="d-flex flex-column gap-3">
               <h2>
                 Hello, It's me <br />
-                <p className="my-2">Ahmed Makhlouf</p>
+                <p className="my-2">Ahmed Makhlouf,</p>
                 <p>
-                  And I'm a{" "}
+                  I'm a{" "}
                   <span className="header-tagline">
-                    {currentText}
-                    <CursorText />
+                    <ReactTyped
+                      strings={[
+                        "Full-Stack Developer",
+                        "MERN Stack Developer",
+                        "Web Scraping Specialist",
+                        "Problem Solver",
+                        "Collaborative Team Player",
+                      ]}
+                      typeSpeed={60}
+                      backSpeed={40}
+                      loop
+                    />
                   </span>
                 </p>
               </h2>

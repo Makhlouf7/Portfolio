@@ -56,9 +56,11 @@ const About = function () {
   return (
     <section id="about" className="section">
       <Container>
-        <Row>
-          <Col className="col-12 p-3">
-            <h2 className="mb-3 text-center">About me</h2>
+        <h2 className="section-title">
+          About <span>Me</span>
+        </h2>
+        <Row className="p-3">
+          <Col className="col-12">
             <div className="about-cards-container">
               {cards.map((card, index) => {
                 return (

@@ -12,6 +12,22 @@ const NavBar = function () {
     setActiveLink(value);
   };
 
+  useEffect(() => {
+    const sections = document.querySelectorAll(".section");
+    // Initialize the observer API
+    const observer = new IntersectionObserver(
+      (entries) =>
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveLink(entry.target.id);
+        }),
+      { threshold: 0.6 }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => sections.forEach((section) => observer.unobserve(section));
+  });
+
   return (
     <Navbar expand="lg" fixed="top">
       <Container fluid>
